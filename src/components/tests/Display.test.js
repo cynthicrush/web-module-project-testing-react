@@ -1,16 +1,47 @@
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import Display from './../Display';
+
+const testShow = {
+  //add in approprate test data structure here.
+  name: 'Stranger Things',
+  summary: 'Paranormal TV show',
+  seasons: [
+    {id:1, name:'season 1', episodes: []},
+    {id:2, name:'season 2', episodes: []},
+    {id:3, name:'season 3', episodes: []},
+    {id:4, name:'season 4', episodes: []},
+  ],
+}
+
+test('renders without errors', ()=>{
+  render(<Display />);
+});
+
+test('renders show component when button is clicked ', ()=>{
+  const mockhandleClick = jest.fn();
+  let show = null;
+  render(<Display show={show}/>);
+  const button = screen.getByRole("button");
+  show = testShow;
+  userEvent.click(button);
+  expect(mockhandleClick).toHaveBeenCalled();
+});
+
+test('renders without errors', ()=>{
+ 
+ 
+  render(<Display />);
+});
+
+test('renders without errors', ()=>{
+  render(<Display />);
 
 
 
-
-
-
-
-
-
-
-
-
-
+});
 
 
 ///Tasks:
